@@ -3,5 +3,14 @@
 {% block title %}{{ someVariable }}{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    <div class="container">
+        <div class="nfq-academy">{{ someVariable }}</div>
+
+        {% if app.user %}
+            <p>Hello, {{ app.user.firstname }}!</p>
+            <a class="btn btn-danger" href="{{ path('app_logout')}}">Logout</a>
+        {% else %}
+            <a class="btn btn-success" href="{{ path('app_login')}}">Login</a>
+        {% endif %}
+    </div>
 {% endblock %}
