@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface
 {
     /**
+     * @var int
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -19,11 +20,13 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
+     * @var array
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -53,7 +56,7 @@ class User implements UserInterface
     private $jobTitle;
 
     /**
-     * @var string
+     * @var bool
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isFormerEmployee;
@@ -88,6 +91,7 @@ class User implements UserInterface
 
     /**
      * @param string $email
+     *
      * @return User
      */
     public function setEmail(string $email): self
@@ -109,6 +113,7 @@ class User implements UserInterface
 
     /**
      * @see UserInterface
+     *
      * @return array
      */
     public function getRoles(): array
@@ -122,6 +127,7 @@ class User implements UserInterface
 
     /**
      * @param array $roles
+     *
      * @return User
      */
     public function setRoles(array $roles): self
@@ -141,6 +147,7 @@ class User implements UserInterface
 
     /**
      * @param string $firstName
+     *
      * @return User
      */
     public function setFirstName(string $firstName): self
@@ -160,6 +167,7 @@ class User implements UserInterface
 
     /**
      * @param string $lastName
+     *
      * @return User
      */
     public function setLastName(string $lastName): self
@@ -179,6 +187,7 @@ class User implements UserInterface
 
     /**
      * @param string $jobTitle
+     *
      * @return User
      */
     public function setJobTitle(string $jobTitle): self
@@ -198,9 +207,10 @@ class User implements UserInterface
 
     /**
      * @param bool $isFormerEmployee
-     * @return $this
+     *
+     * @return User
      */
-    public function setIsFormerEmployee(bool $isFormerEmployee)
+    public function setIsFormerEmployee(bool $isFormerEmployee): self
     {
         $this->isFormerEmployee = $isFormerEmployee;
 
@@ -210,16 +220,17 @@ class User implements UserInterface
     /**
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
 
     /**
      * @param \DateTime $createdAt
-     * @return $this
+     *
+     * @return User
      */
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -229,16 +240,17 @@ class User implements UserInterface
     /**
      * @return \DateTime
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): \DateTime
     {
         return $this->updatedAt;
     }
 
     /**
      * @param \DateTime $updatedAt
-     * @return $this
+     *
+     * @return User
      */
-    public function setUpdatedAt(\DateTime $updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -247,6 +259,7 @@ class User implements UserInterface
 
     /**
      * @see UserInterface
+     *
      * @return string
      */
     public function getPassword(): string
@@ -256,6 +269,7 @@ class User implements UserInterface
 
     /**
      * @param string $password
+     *
      * @return User
      */
     public function setPassword(string $password): self
