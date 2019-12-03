@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserSkillRepository")
+ * @ORM\Table(name="user_skill", indexes={@ORM\Index(name="skill_idx", columns={"skill"})})
  */
 class UserSkill
 {
