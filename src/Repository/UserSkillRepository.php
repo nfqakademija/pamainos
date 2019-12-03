@@ -23,4 +23,16 @@ class UserSkillRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, UserSkill::class);
     }
+
+    /**
+     * @param int $userId
+     *
+     * @return array
+     */
+    public function findUserSkills(int $userId): array
+    {
+        return $this->findBy([
+            'user' => $userId
+        ]);
+    }
 }

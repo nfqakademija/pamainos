@@ -23,4 +23,16 @@ class SkillRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Skill::class);
     }
+
+    /**
+     * @param string $name
+     *
+     * @return Skill|null
+     */
+    public function findByName(string $name): ?Skill
+    {
+        return $this->findOneBy([
+            'name' => $name
+        ]);
+    }
 }

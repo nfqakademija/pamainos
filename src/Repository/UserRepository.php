@@ -22,4 +22,30 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, User::class);
     }
+
+    /**
+     * @param string $email
+     *
+     * @return User|null
+     */
+    public function findByEmail(string $email): ?User
+    {
+        return $this->findOneBy([
+            'email' => $email
+        ]);
+    }
+
+    /**
+     * @param string $firstName
+     * @param string $lastName
+     *
+     * @return User[]
+     */
+    public function findByFullName(string $firstName, string $lastName): array
+    {
+        return $this->findBy([
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
+    }
 }
