@@ -1,0 +1,16 @@
+@import 'argon-dashboard.css';
+@import 'argon-dashboard.min.css';
+@import '../js/plugins/bootstrap/dist/css/bootstrap-grid.min.css';
+@import '../js/plugins/bootstrap/dist/css/bootstrap.min.css';
+@import '../js/plugins/bootstrap/dist/css/bootstrap-reboot.min.css';
+@import '../vendor/font-awesome/css/font-awesome.css';
+@import '../vendor/font-awesome/css/font-awesome.min.css';
+@import '../vendor/nucleo/css/nucleo.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+@import '../js/plugins/nucleo/css/nucleo.css';
+@import '../js/plugins/@fortawesome/fontawesome-free/css/all.min.css';
+
+
+.bg-grayish{
+    background-color: #e9ecef !important;
+}
