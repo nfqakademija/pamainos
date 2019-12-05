@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -72,6 +74,19 @@ class User implements UserInterface
      * @ORM\Column(type="datetime", name="updated_at", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UserSkill", mappedBy="user_id")
+     */
+    private $userSkills;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->userSkills = new ArrayCollection();
+    }
 
     /**
      * @return int|null
@@ -295,5 +310,46 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|UserSkill[]
+     */
+    public function getUserSkills(): Collection
+    {
+        return $this->userSkills;
+    }
+
+    /**
+     * @param UserSkill $userSkill
+     *
+     * @return User
+     */
+    public function addUserSkill(UserSkill $userSkill): self
+    {
+        if (!$this->userSkills->contains($userSkill)) {
+            $this->userSkills[] = $userSkill;
+            $userSkill->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param UserSkill $userSkill
+     *
+     * @return User
+     */
+    public function removeUserSkill(UserSkill $userSkill): self
+    {
+        if ($this->userSkills->contains($userSkill)) {
+            $this->userSkills->removeElement($userSkill);
+            // set the owning side to null (unless already changed)
+            if ($userSkill->getUserId() === $this) {
+                $userSkill->setUserId(null);
+            }
+        }
+
+        return $this;
     }
 }
